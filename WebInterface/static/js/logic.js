@@ -18,21 +18,43 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 // Uncomment this link local geojson for when data.beta.nyc is down
 // var link = "static/data/nyc.geojson";
-var link = "static/data/NewJersey.geojson";
+// var link = "static/data/NewJersey.geojson";
 
-// Our style object
-var mapStyle = {
-  color: "white",
-  fillColor: "pink",
-  fillOpacity: 0.5,
-  weight: 1.5
-};
+// // Our style object
+// var mapStyle = {
+//   color: "white",
+//   fillColor: "pink",
+//   fillOpacity: 0.5,
+//   weight: 1.5
+// };
 
-// Grabbing our GeoJSON data..
-d3.json(link, function(data) {
-  // Creating a geoJSON layer with the retrieved data
-  L.geoJson(data, {
-    // Passing in our style object
-    style: mapStyle
+// // Grabbing our GeoJSON data..
+// d3.json(link, function(data) {
+//   // Creating a geoJSON layer with the retrieved data
+//   L.geoJson(data, {
+//     // Passing in our style object
+//     style: mapStyle
+//   }).addTo(map);
+// });
+
+var linkRailStop = "static/data/Rail_stops.json";
+
+d3.json(linkRailStop, function(response) {
+
+  console.log(response);
+
+  var railArray = [];
+
+  for (var i = 0; i < response.length; i++) {
+
+      railArray.push([parseFloat(response[i].stop_lat), parseFloat(response[i].stop_lon)]);
+    }
+    console.log(railArray);
+
+  var heat = L.heatLayer(railArray, {
+    radius: 20,
+    blur: 35
   }).addTo(map);
+
 });
+
