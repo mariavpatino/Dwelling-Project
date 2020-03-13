@@ -4,57 +4,90 @@ var map = L.map("map", {
   zoom: 8
 });
 
-// Adding tile layer
+//Adding tile layer
 L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+  attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
   maxZoom: 18,
   id: "mapbox.streets",
   accessToken: API_KEY
 }).addTo(map);
 
-// If data.beta.nyc is down comment out this link
-// var link = "http://data.beta.nyc//dataset/0ff93d2d-90ba-457c-9f7e-39e47bf2ac5f/resource/" +
-// "35dd04fb-81b3-479b-a074-a27a37888ce7/download/d085e2f8d0b54d4590b1e7d1f35594c1pediacitiesnycneighborhoods.geojson";
-
-// Uncomment this link local geojson for when data.beta.nyc is down
-// var link = "static/data/nyc.geojson";
-// var link = "static/data/NewJersey.geojson";
-
-// // Our style object
-// var mapStyle = {
+//  var link = "static/data/NewJersey.geojson";
+// // // Our style object
+//  var mapStyle = {
 //   color: "white",
-//   fillColor: "pink",
+//    fillColor: "blue",
 //   fillOpacity: 0.5,
-//   weight: 1.5
-// };
-
-// // Grabbing our GeoJSON data..
-// d3.json(link, function(data) {
+//    weight: 1.5
+//  };
+//Grabbing our GeoJSON data..
+//d3.json(link, function(data) {
 //   // Creating a geoJSON layer with the retrieved data
-//   L.geoJson(data, {
+ // L.geoJson(data, {
 //     // Passing in our style object
-//     style: mapStyle
+ //    style: mapStyle
+ //  }).addTo(map); });
+
+//  // Rail Stops
+// var linkHighSchool = "static/data/Rail_stops.json";
+// d3.json(linkHighSchool, function(response) {
+//   console.log(response);
+//   for (var i = 0; i < response.length; i++) {
+//     var latitude = parseFloat(response[i].stop_lat);
+//     var longitude = parseFloat(response[i].stop_lon);
+//     if (latitude) {
+//       L.marker([latitude, longitude]).addTo(map);
+//     }
+//   }})
+
+// var linkHighSchool = "static/data/Rail_stops.json";
+// d3.json(linkHighSchool, function(response) {
+//   console.log(response);
+//   var heatArray = [];
+//   for (var i = 0; i < response.length; i++) {
+//     var latitude = parseFloat(response[i].stop_lat);
+//     var longitude = parseFloat(response[i].stop_lon);
+//     if (latitude) {
+//       heatArray.push([latitude, longitude]);
+//     }
+//   }
+//   var heat = L.heatLayer(heatArray, {
+//     radius: 35,
+//     blur: 3
 //   }).addTo(map);
-// });
 
-var linkRailStop = "static/data/Rail_stops.json";
+// })
+// ;
 
-d3.json(linkRailStop, function(response) {
-
+// High School
+var linkHighSchool = "static/data/SchoolRankings/SchoolsData/high_school_df.json";
+d3.json(linkHighSchool, function(response) {
   console.log(response);
-
-  var railArray = [];
-
   for (var i = 0; i < response.length; i++) {
-
-      railArray.push([parseFloat(response[i].stop_lat), parseFloat(response[i].stop_lon)]);
+    var latitude = parseFloat(response[i].Latitude);
+    var longitude = parseFloat(response[i].longitude);
+    if (latitude) {
+      L.marker([latitude, longitude]).addTo(map);
     }
-    console.log(railArray);
+  }})
 
-  var heat = L.heatLayer(railArray, {
-    radius: 20,
-    blur: 35
+var linkHighSchool = "static/data/SchoolRankings/SchoolsData/high_school_df.json";
+d3.json(linkHighSchool, function(response) {
+  console.log(response);
+  var heatArray = [];
+  for (var i = 0; i < response.length; i++) {
+    var latitude = parseFloat(response[i].Latitude);
+    var longitude = parseFloat(response[i].longitude);
+    if (latitude) {
+      heatArray.push([latitude, longitude]);
+    }
+  }
+  var heat = L.heatLayer(heatArray, {
+    radius: 35,
+    blur: 3
   }).addTo(map);
 
-});
+})
+;
 
+//High School Markers
