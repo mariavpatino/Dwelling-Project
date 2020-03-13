@@ -1,4 +1,4 @@
-{"_id":{"$oid":"5e690e7064006f4f1031d595"},"﻿stop_id":"162","stop_code":"10817","stop_name":"MAIN ST AT ADAMS AVE","stop_desc":"","stop_lat":"39.395538","stop_lon":"-74.519212","zone_id":"0"}
+[{"_id":{"$oid":"5e690e7064006f4f1031d595"},"﻿stop_id":"162","stop_code":"10817","stop_name":"MAIN ST AT ADAMS AVE","stop_desc":"","stop_lat":"39.395538","stop_lon":"-74.519212","zone_id":"0"}
 {"_id":{"$oid":"5e690e7064006f4f1031d596"},"﻿stop_id":"163","stop_code":"10837","stop_name":"MAIN ST AT DELILAH RD","stop_desc":"","stop_lat":"39.405069","stop_lon":"-74.510613","zone_id":"0"}
 {"_id":{"$oid":"5e690e7064006f4f1031d597"},"﻿stop_id":"164","stop_code":"10811","stop_name":"MAIN ST AT DELILAH RD","stop_desc":"","stop_lat":"39.404748","stop_lon":"-74.51104","zone_id":"0"}
 {"_id":{"$oid":"5e690e7064006f4f1031d598"},"﻿stop_id":"165","stop_code":"10820","stop_name":"MAIN ST AT BAYVIEW AVE","stop_desc":"","stop_lat":"39.386739","stop_lon":"-74.526992","zone_id":"0"}
@@ -16504,4 +16504,4 @@
 {"_id":{"$oid":"5e690e7064006f4f1032160c"},"﻿stop_id":"43909","stop_code":"33037","stop_name":"PATERSON AVE AT MARSHALL ST","stop_desc":"","stop_lat":"40.739455","stop_lon":"-74.042933","zone_id":"336"}
 {"_id":{"$oid":"5e690e7064006f4f1032160d"},"﻿stop_id":"43910","stop_code":"32979","stop_name":"LOCUST AVE AT STRONG ST","stop_desc":"","stop_lat":"40.854376","stop_lon":"-74.10974","zone_id":"848"}
 {"_id":{"$oid":"5e690e7064006f4f1032160e"},"﻿stop_id":"43911","stop_code":"32976","stop_name":"MARKET ST 200'E OF PINE ST","stop_desc":"","stop_lat":"40.900139","stop_lon":"-74.11896","zone_id":"592"}
-{"_id":{"$oid":"5e690e7064006f4f1032160f"},"﻿stop_id":"","stop_code":null,"stop_name":null,"stop_desc":null,"stop_lat":null,"stop_lon":null,"zone_id":null}
+{"_id":{"$oid":"5e690e7064006f4f1032160f"},"﻿stop_id":"","stop_code":null,"stop_name":null,"stop_desc":null,"stop_lat":null,"stop_lon":null,"zone_id":null}]
