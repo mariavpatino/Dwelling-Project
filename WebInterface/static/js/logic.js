@@ -91,3 +91,29 @@ d3.json(linkHighSchool, function(response) {
 ;
 
 //High School Markers
+function createMarkers(response) {
+
+  // Pull the schools
+  var highSchools = response;
+
+  // Initialize an array to hold bike markers
+  var schoolMarkers = [];
+
+  // Loop through the stations array
+  for (var index = 0; index < highSchools.length; index++) {
+    var highSchools = highSchools[index];
+
+    // For each station, create a marker and bind a popup with the station's name
+    var schoolMarker = L.marker([highSchools.Latitude, highSchools.longitude])
+      .bindPopup("<h3>" + highSchools.HighSchoolName + "<h3><h3>Ranking: " + highSchools.HighSchoolRanking + "<h3>");
+
+    // Add the marker to the bikeMarkers array
+    schoolMarkers.push(schoolMarker);
+  }
+
+  // Create a layer group made from the bike markers array, pass it into the createMap function
+  createMap(L.layerGroup(schoolMarker));
+}
+
+// Perform an API call to the Citi Bike API to get station information. Call createMarkers when complete
+d3.json(linkHighSchool, createMarkers);
