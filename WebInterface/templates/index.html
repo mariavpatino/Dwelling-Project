@@ -145,11 +145,12 @@
         <div class="col-md-2 col-sm-12">
           <form style="text-align:left;font-size:12px">
             <fieldset class="form-group">
-              <legend>City or Zip</legend>
-              <input type="select" class="form-control-plaintext" id="CityOrZip">
+              <legend>City</legend>
+              <select class="form-control-plaintext" id="City">
               {% for item in cityNames %}
-                <option value= {{ item.city }}>{{ item.city }}</option>
+                <option value= "{{ item.latlong }}">{{ item.city }}</option>
               {% endfor %}
+              </select>
             </fieldset>
             <fieldset class="form-group">
               <legend>Home Type</legend>

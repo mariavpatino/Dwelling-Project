@@ -48,18 +48,55 @@ def home():
     # Connect to a database. Will create one if not already available.
     db2 = client2.Dwelling_db
     print("---------------------Here------------------")
-    cities = db2.zip_lat_lon.find()
+    cities = db2.city_lat_lon.find()
 
     for x in cities:
         temp = {
             'city': x['City'],
-            'latlong' : f"[{x['Latitude']},{x['Longitude']}"
+            'latlong' : f"{x['Latitude']},{x['Longitude']}"
         }
         city_names.append(temp)
-    # print(rStations)
+    print(city_names)
     
     
     return render_template('index.html', cityNames = city_names)
+
+@app.route("/rr")
+def railroad():
+    # Create connection variable
+    conn2 = 'mongodb://localhost:27017'
+    listings = []
+
+    # Pass connection to the pymongo instance.
+    client2 = pymongo.MongoClient(conn2)
+
+    # Connect to a database. Will create one if not already available.
+    db2 = client2.Dwelling_db
+    print("---------------------Here------------------")
+    listings = [doc for doc in db2.Rail_stops.find({}, {'_id':False})]
+
+    
+    
+    return jsonify(listings)
+
+
+@app.route("/hs")
+def highSchool():
+    # Create connection variable
+    conn2 = 'mongodb://localhost:27017'
+    listings = []
+
+    # Pass connection to the pymongo instance.
+    client2 = pymongo.MongoClient(conn2)
+
+    # Connect to a database. Will create one if not already available.
+    db2 = client2.Dwelling_db
+    print("---------------------Here------------------")
+    schools = [doc for doc in db2.high_school.find({}, {'_id':False})]
+
+ 
+    
+    return jsonify(schools)
 
 
 if __name__ == "__main__":

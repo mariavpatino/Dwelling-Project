@@ -12,35 +12,51 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
   accessToken: API_KEY
 }).addTo(map);
 
-//  var link = "static/data/NewJersey.geojson";
+ var link = "static/data/NewJersey.geojson";
 // // // Our style object
-//  var mapStyle = {
-//   color: "white",
-//    fillColor: "blue",
-//   fillOpacity: 0.5,
-//    weight: 1.5
-//  };
+ var mapStyle = {
+  color: "white",
+   fillColor: "pink",
+  fillOpacity: 0.5,
+   weight: 1.5
+ };
 //Grabbing our GeoJSON data..
-//d3.json(link, function(data) {
-//   // Creating a geoJSON layer with the retrieved data
- // L.geoJson(data, {
-//     // Passing in our style object
- //    style: mapStyle
- //  }).addTo(map); });
+d3.json(link, function(data) {
+  // Creating a geoJSON layer with the retrieved data
+ layouts = L.geoJson(data, {
+    // Passing in our style object
+    style: mapStyle
+  }).addTo(map); });
+
 
  // Rail Stops
+
+CitySelect = d3.select("#City")
+CitySelect.on("change", function(){
+  console.log(CitySelect.property("value"))
+  // console.log(this.value)
+  var t = CitySelect.property("value");
+  var lat = t.split(",")[0];
+  var lon = t.split(",")[1];
+  var coord = {
+    'lat' : lat,
+    'lon': lon
+  }
+  map.flyTo(coord,13);
+  // map.fitBounds(CitySelect.property("value"));
+})
 
 var RailStopIcon = new L.Icon({
   iconUrl: 'static/img/Icons/TrainIcon.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize: [2, 2],
+  iconSize: [20, 20],
   iconAnchor: [2,2],
   popupAnchor: [1, -34],
   shadowSize: [41, 41]
 });
 
-var linkRailStops = "static/data/Rail_stops.json";
-d3.json(linkRailStops, function(response) {
+// var linkRailStops = "static/data/Rail_stops.json";
+d3.json("/rr", function(response) {
   console.log(response);
   for (var i = 0; i < response.length; i++) {
     var latitude = parseFloat(response[i].stop_lat);
@@ -50,8 +66,8 @@ d3.json(linkRailStops, function(response) {
     }
   }})
 
-var linkRailStops = "static/data/Rail_stops.json";
-d3.json(linkRailStops, function(response) {
+// var linkRailStops = "static/data/Rail_stops.json";
+d3.json("/rr", function(response) {
   console.log(response);
   var heatArray = [];
   for (var i = 0; i < response.length; i++) {
@@ -130,8 +146,8 @@ var highSchoolIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
-var linkHighSchool = "static/data/SchoolRankings/SchoolsData/high_school_df.json";
-d3.json(linkHighSchool, function(response) {
+// var linkHighSchool = "static/data/SchoolRankings/SchoolsData/high_school_df.json";
+d3.json("/hs", function(response) {
   console.log(response);
   for (var i = 0; i < response.length; i++) {
     var latitude = parseFloat(response[i].Latitude);
@@ -141,8 +157,8 @@ d3.json(linkHighSchool, function(response) {
     }
   }})
 
-var linkHighSchool = "static/data/SchoolRankings/SchoolsData/high_school_df.json";
-d3.json(linkHighSchool, function(response) {
+// var linkHighSchool = "static/data/SchoolRankings/SchoolsData/high_school_df.json";
+d3.json("/hs", function(response) {
   console.log(response);
   var heatArray = [];
   for (var i = 0; i < response.length; i++) {
