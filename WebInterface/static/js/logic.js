@@ -1,3 +1,5 @@
+// console.log("Entered: " + railStop[0])
+
 // Creating map object
 var map = L.map("map", {
   center: [40.0583, -74.4057],
