@@ -28,38 +28,108 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
  //    style: mapStyle
  //  }).addTo(map); });
 
-//  // Rail Stops
-// var linkHighSchool = "static/data/Rail_stops.json";
-// d3.json(linkHighSchool, function(response) {
-//   console.log(response);
-//   for (var i = 0; i < response.length; i++) {
-//     var latitude = parseFloat(response[i].stop_lat);
-//     var longitude = parseFloat(response[i].stop_lon);
-//     if (latitude) {
-//       L.marker([latitude, longitude]).addTo(map);
-//     }
-//   }})
+ // Rail Stops
 
-// var linkHighSchool = "static/data/Rail_stops.json";
-// d3.json(linkHighSchool, function(response) {
-//   console.log(response);
-//   var heatArray = [];
-//   for (var i = 0; i < response.length; i++) {
-//     var latitude = parseFloat(response[i].stop_lat);
-//     var longitude = parseFloat(response[i].stop_lon);
-//     if (latitude) {
-//       heatArray.push([latitude, longitude]);
-//     }
-//   }
-//   var heat = L.heatLayer(heatArray, {
-//     radius: 35,
-//     blur: 3
-//   }).addTo(map);
+var RailStopIcon = new L.Icon({
+  iconUrl: 'static/img/Icons/TrainIcon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [2, 2],
+  iconAnchor: [2,2],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
 
-// })
-// ;
+var linkRailStops = "static/data/Rail_stops.json";
+d3.json(linkRailStops, function(response) {
+  console.log(response);
+  for (var i = 0; i < response.length; i++) {
+    var latitude = parseFloat(response[i].stop_lat);
+    var longitude = parseFloat(response[i].stop_lon);
+    if (latitude) {
+      L.marker([latitude, longitude], {icon: RailStopIcon}).addTo(map);
+    }
+  }})
+
+var linkRailStops = "static/data/Rail_stops.json";
+d3.json(linkRailStops, function(response) {
+  console.log(response);
+  var heatArray = [];
+  for (var i = 0; i < response.length; i++) {
+    var latitude = parseFloat(response[i].stop_lat);
+    var longitude = parseFloat(response[i].stop_lon);
+    if (latitude) {
+      heatArray.push([latitude, longitude]);
+    }
+  }
+  var heat = L.heatLayer(heatArray, {
+    radius: 35,
+    blur: 3
+  }).addTo(map);
+
+})
+;
+
+
+// Bus Stops
+
+var BusStopIcon = new L.Icon({
+  iconUrl: 'static/img/Icons/BusIcon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [20, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+var linkBusStops = "static/data/Bus - Stops - json.csv";
+d3.json(linkBusStops, function(response) {
+  console.log(response);
+  for (var i = 0; i < response.length; i++) {
+    var latitude = parseFloat(response[i].stop_lat);
+    var longitude = parseFloat(response[i].stop_lon);
+    if (latitude) {
+      L.marker([latitude, longitude], {icon: BusStopIcon}).addTo(map);
+    }
+  }})
+
+var linkBusStops = "static/data/Bus - Stops - json.csv";
+d3.json(linkBusStops, function(response) {
+  console.log(response);
+  var heatArray = [];
+  for (var i = 0; i < response.length; i++) {
+    var latitude = parseFloat(response[i].stop_lat);
+    var longitude = parseFloat(response[i].stop_lon);
+    if (latitude) {
+      heatArray.push([latitude, longitude]);
+    }
+  }
+  var heat = L.heatLayer(heatArray, {
+    radius: 35,
+    blur: 3
+  }).addTo(map);
+
+})
+;
+
+
+
+
+
+
+
+
 
 // High School
+
+var highSchoolIcon = new L.Icon({
+  iconUrl: 'static/img/Icons/SchoolsIcon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [20, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
 var linkHighSchool = "static/data/SchoolRankings/SchoolsData/high_school_df.json";
 d3.json(linkHighSchool, function(response) {
   console.log(response);
@@ -67,7 +137,7 @@ d3.json(linkHighSchool, function(response) {
     var latitude = parseFloat(response[i].Latitude);
     var longitude = parseFloat(response[i].longitude);
     if (latitude) {
-      L.marker([latitude, longitude]).addTo(map);
+      L.marker([latitude, longitude], {icon: highSchoolIcon}).addTo(map);
     }
   }})
 
