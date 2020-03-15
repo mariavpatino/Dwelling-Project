@@ -66,7 +66,7 @@ The data extracted (house data, school data, and transportation data) is stored 
 <br>
 
 ## FLASK 
-Creating Interactivity.<br><br>
+We used a Javascript/HTML frontend with a Flask backend server written in python. The backend is comprised of three end-points as displayed below. The first endpoint simply renders the page while the second handles the rail stop locations requests sent from the frontend and the third one handles the (top 50) high school locations requests sent from the frontend. <br><br>
 
 ![Flask1](WebInterface/static/img/Flask1.PNG)
 ![Flask2](WebInterface/static/img/Flask2.PNG)
