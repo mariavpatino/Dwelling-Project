@@ -24,6 +24,14 @@ Technology Used:
 
 <br>
 
+## INSTALL
+
+* Clone from Github page
+* In terminal or gitBash, run a git clone in desired location to save app.
+* Run an npm install to download required packages.
+
+<br>
+
 ## PROCESS
 ### Dataset
 
